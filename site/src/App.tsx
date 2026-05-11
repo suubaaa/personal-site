@@ -56,6 +56,10 @@ export default function App() {
               </a>
               <p>a small little project i made connecting the trace.moe api to a discord bot.</p>
               <p>you can take a screenshot of an anime, and run a command, and the bot will tell you what anime it's from and where the moment in your screenshot happens</p>
+              <a href="https://github.com/suubaaa/personal-site" target="_blank" className="text-2xl">
+                suba's personal site
+              </a>
+              <p>what more do you want to know? you're using it!</p>
               <p>more coming soon..</p>
             </article>
 
