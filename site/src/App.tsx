@@ -37,13 +37,15 @@ export default function App() {
               <h3>hi, welcome!</h3>
               <p>thanks for coming </p>
               <img src="/sabergif4.gif" />
-              <p>despite my moody twitter page, i like to have fun and not be serious and this is a good way to show that.</p>
-              <p>a bit about me:</p>
-                <p>• i enjoy watching anime and reading manga, altho haven't had change to enjoy lately..</p>
-                <p>• i enjoy reading visual novels, but im noob so haven't read much beyond tsukihime (remake), mahoyo, and some of subahibi</p>
+              <p>despite my moody twitter page, i like to have fun and not be serious and this is a good way to show that...</p>
+              <p className="text-2xl">a bit about me:</p>
+                <p>i'm a 22 year old and a guy.</p>
+              <p className="text-2xl">a bit about my interests</p>
+                <p>i enjoy watching anime and reading manga, altho haven't had change to enjoy lately..</p>
+                <p>i enjoy reading visual novels, but im noob so haven't read much beyond tsukihime (remake), mahoyo, and some of subahibi</p>
                 <p>(no correlation to my name)</p>
-                <p>• i enjoy very grindy games because im a natural slave and league of legends.</p>
-              <p>a bit about the site:</p>
+                <p>i enjoy very grindy games because im a natural slave and league of legends.</p>
+              <p className="text-2xl">a bit about the site:</p>
                 <p>i want to use this site to show off any fun project i made</p>
                 <p>the site is pretty bare bones and empty, but with time, it'll fill up :)</p>
             </article>
