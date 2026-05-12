@@ -20,7 +20,7 @@ export default function App() {
             </div>
           </div>
         
-          <div className="window-body">
+          <div className="window-body leading-relaxed">
             <menu role="tablist">
               <button aria-selected={activeTab === "home"} onClick={() => setActiveTab("home")}>
                 home
@@ -63,6 +63,8 @@ export default function App() {
               </a>
               <p>what more do you want to know? you're using it!</p>
               <p>more coming soon..</p>
+              <a href="https://github.com/suubaaa/anirecs" className="text-2xl">anirecs</a>
+              <p>basic site where you put in your anilist username and get 5 recs based off your highly rated animes</p>
             </article>
 
             <article role="tabpanel" id="projects" hidden={activeTab !== "links"}>
@@ -93,7 +95,7 @@ export default function App() {
           </div>
         </div>
 
-        <div className="window-body">
+        <div className="window-body leading-relaxed">
           <details>
             <summary>anime</summary>
             <ul className="tree-view">
@@ -163,6 +165,58 @@ export default function App() {
           <p className="font-light">last updated may 11, 2026</p>
         </div>
       </div>
+
+        <div className="window absolute bottom-16 right-4" style ={{ width: 300 }}>
+          <div className="title-bar">
+            <div className="title-bar-text">what's new</div>
+            <div className="title-bar-controls">
+              <button aria-label="Minimize" />
+              <button aria-label="Maximize" />
+              <button aria-label="Close" />
+            </div>
+          </div>
+        
+          <div className="window-body leading-relaxed" style={{ height: 200, overflowY: 'auto' }}>
+            <ul>
+              <li>
+                <span className="font-bold text-sm">
+                  new window added - this one!
+                </span>
+                <br /> 
+                  added a window to help keep track of progress for the site. should be very fun to see it become huge one day. note to self: refactor code...
+                < br/>
+                <span className="text-right">
+                  may 12, 2026
+                </span>
+                <hr />
+                </li>
+              <li>
+                <span className="font-bold text-sm">
+                  new project added
+                </span>
+                <br /> 
+                  site that recommmends anime to you based off of your anilist profile. takes your anime list rated 7+ and asks an ai (sorry, im lazy) to rec animes.
+                < br/>
+                <span className="text-right">
+                  may 12, 2026
+                </span>
+                <hr />
+                </li>
+              <li>
+                <span className="font-bold text-sm">
+                  new window added!
+                </span>
+                <br /> 
+                  added a now doing window that shows my progress of stuff im watching/reading/playing.
+                < br/>
+                <span className="text-right">
+                  may 11, 2026
+                </span>
+                <hr />
+                </li>
+            </ul>
+          </div>
+        </div>
       <Taskbar /> 
     </div>
   );
