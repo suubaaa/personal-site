@@ -6,7 +6,7 @@ export default function Wall() {
     const nodeRef = useRef(null);
 
     const [input, setInput] = useState("");
-    const [comment, setComment] = useState<{message: string, name: string}[]>([]);
+    const [comment, setComment] = useState<{message: string, name: string, created_at: string}[]>([]);
     const [name, setName] = useState("");
 
     async function penis() {
@@ -16,14 +16,14 @@ export default function Wall() {
 
         await supabase.from("comments").insert({ message: input, name: name || "anon"});
 
-        setComment([...comment, { message: input, name: name || "anon" }]);
+        setComment([...comment, { message: input, name: name || "anon", created_at: new Date().toISOString()}]);
         setInput("");
     }
 
     useEffect(() => {
         async function fetchComments() {
-            const { data } = await supabase.from("comments").select("*");
-            if(data) setComment(data.map(c => ({ message: c.message, name: c.name })));
+            const { data } = await supabase.from("comments").select("*").order('created_at', { ascending: false });
+            if(data) setComment(data.map(c => ({ message: c.message, name: c.name, created_at: c.created_at})));
         }
         fetchComments();
     }, []);
@@ -54,7 +54,7 @@ export default function Wall() {
                         {comment.map((comment, index) =>
                             <div key={index}>
                             <p>{comment.message}</p>
-                            <p className="font-light"> {comment.name} @ {new Date().toLocaleString()}</p>
+                            <p className="font-light"> {comment.name} @ {new Date(comment.created_at).toLocaleString()}</p>
                             <hr />
                             </div>
                         )}
