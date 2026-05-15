@@ -20,6 +20,18 @@ export default function WhatsNew() {
             <ul>
               <li>
                 <span className="font-bold text-sm">
+                  new comment wall feature!
+                </span>
+                <br /> 
+                  can now leave a comment for me on the site for me (all) to read.
+                < br/>
+                <span className="text-right">
+                  may 14, 2026
+                </span>
+                <hr />
+                </li>
+              <li>
+                <span className="font-bold text-sm">
                   windows are now draggable!
                 </span>
                 <br /> 
