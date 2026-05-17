@@ -29,7 +29,7 @@ export default function Wall() {
     }, []);
 
     return(
-        <Draggable handle=".title-bar" nodeRef={nodeRef}>
+        <Draggable grid={[5,5]} handle=".title-bar" nodeRef={nodeRef}>
             <div ref={nodeRef} className="window absolute top-20 right-4" style ={{ width: 400 }}>
                 <div className="title-bar">
                     <div className="title-bar-text">comment wall</div>

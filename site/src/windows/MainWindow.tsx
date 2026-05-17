@@ -7,7 +7,7 @@ export default function MainWindow() {
   const nodeRef = useRef(null);
   
     return(
-    <Draggable handle=".title-bar" nodeRef={nodeRef}>
+    <Draggable grid={[5,5]} handle=".title-bar" nodeRef={nodeRef}>
     <div ref={nodeRef} className="window absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
         <div className="window" style={{ width: 400 }}>
           <div className="title-bar">

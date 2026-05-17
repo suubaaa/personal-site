@@ -5,7 +5,7 @@ export default function WhatsNew() {
   const nodeRef = useRef(null);
 
     return(
-      <Draggable handle=".title-bar" nodeRef={nodeRef}>
+      <Draggable grid={[5,5]} handle=".title-bar" nodeRef={nodeRef}>
         <div ref={nodeRef} className="window absolute bottom-16 right-4" style ={{ width: 300 }}>
           <div className="title-bar">
             <div className="title-bar-text">what's new</div>
@@ -18,6 +18,18 @@ export default function WhatsNew() {
         
           <div className="window-body leading-relaxed" style={{ height: 200, overflowY: 'auto' }}>
             <ul>
+              <li>
+                <span className="font-bold text-sm">
+                  new ms paint!
+                </span>
+                <br /> 
+                  my new (admittedly not very good or well made..) ms paint window is live. future updates include sending me doodles or saving them for yourself.
+                < br/>
+                <span className="text-right">
+                  may 16, 2026
+                </span>
+                <hr />
+                </li>
               <li>
                 <span className="font-bold text-sm">
                   new comment wall feature!

@@ -5,7 +5,7 @@ export default function NowDoing() {
   const nodeRef = useRef(null);
   
     return(
-      <Draggable handle=".title-bar" nodeRef={nodeRef}>
+      <Draggable grid={[5,5]} handle=".title-bar" nodeRef={nodeRef}>
     <div ref={nodeRef} className="window absolute left-72 top-1/4" style={{ width: 300 }}>
         <div className="title-bar">
           <div className="title-bar-text">now doing..</div>
