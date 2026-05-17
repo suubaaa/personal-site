@@ -1,7 +1,8 @@
-// FOR COMPLETE AND TOTAL TRANSPARENCY, I USED AI TO HANDLE MUCH OF THE CODEMONKEY WORK HERE!!
+// FOR COMPLETE AND TOTAL TRANSPARENCY, I USED AI TO HANDLE MUCH OF THE CODEMONKEY WORK HERE!! AND FIXING THE TYPES!!
 
 import Draggable from "react-draggable";
 import { useRef, useState, useEffect } from 'react';
+import React from 'react';
 
 const COLORS = [
   '#000000', '#808080', '#800000', '#808000',
@@ -13,22 +14,24 @@ const COLORS = [
 
 export default function MsPaint() {
     const nodeRef = useRef(null);
-    const canvasRef = useRef(null);
+    const canvasRef = useRef<HTMLCanvasElement>(null);
     const lastPos = useRef({ x: 0, y: 0 });
     
     const [mouseDown, setMouseDown] = useState(false);
     const [color, setColor] = useState('black');
     const [tool, setTool] = useState('brush');
     
-    const onMouseDown = (e) => {
+    const onMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
         setMouseDown(true);
         lastPos.current = { x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY };
     }
     const onMouseUp = () => setMouseDown(false);
 
-    const onMouseMove = (e) => {
+    const onMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
         if (!mouseDown) return;
+        if (!canvasRef.current) return;
         const context = canvasRef.current.getContext('2d');
+        if (!context) return;
         context.strokeStyle = tool === 'eraser' ? 'white' : color;
         context.lineWidth = tool === 'eraser' ? 16 : 2;
         context.lineCap = 'round';
@@ -40,15 +43,17 @@ export default function MsPaint() {
     }
 
     useEffect(() => {
+        if (!canvasRef.current) return;
         const context = canvasRef.current.getContext('2d');
+        if (!context) return;
         context.fillStyle = 'white';
         context.fillRect(0, 0, 380, 300);
     }, []);
 
     return(
         <Draggable grid={[5,5]} handle=".title-bar" nodeRef={nodeRef}>
-            <div ref={nodeRef} className="window absolute bottom-24 left-24">
-                <div className="window" style={{ width: 440 }}>
+            <div ref={nodeRef} className="window absolute bottom-4 left-4">
+                <div className="window" style={{ width: 420 }}>
                     <div className="title-bar">
                         <div className="title-bar-text">shitty ms paint copy</div>
                         <div className="title-bar-controls">
