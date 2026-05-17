@@ -16,12 +16,23 @@ export default function MsPaint() {
     const nodeRef = useRef(null);
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const lastPos = useRef({ x: 0, y: 0 });
+    const history = useRef<ImageData[]>([]);
     
     const [mouseDown, setMouseDown] = useState(false);
     const [color, setColor] = useState('black');
     const [tool, setTool] = useState('brush');
-    
+
+    const saveHistory = () => {
+        if (!canvasRef.current) return;
+        const context = canvasRef.current.getContext('2d');
+        if (!context) return;
+        const snapshot = context.getImageData(0, 0, 380, 300);
+        history.current.push(snapshot);
+        if (history.current.length > 10) history.current.shift();
+    }
+
     const onMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
+        saveHistory();
         setMouseDown(true);
         lastPos.current = { x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY };
     }
@@ -40,6 +51,15 @@ export default function MsPaint() {
         context.lineTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
         context.stroke();
         lastPos.current = { x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY };
+    }
+
+    const onUndo = () => {
+        if (!canvasRef.current) return;
+        const context = canvasRef.current.getContext('2d');
+        if (!context) return;
+        const last = history.current.pop();
+        if (!last) return;
+        context.putImageData(last, 0, 0);
     }
 
     useEffect(() => {
@@ -92,6 +112,7 @@ export default function MsPaint() {
                         <div style={{ display: 'flex', gap: 4 }}>
                             <button onClick={() => setTool('brush')} style={{ fontWeight: tool === 'brush' ? 'bold' : 'normal' }}>✏ brush</button>
                             <button onClick={() => setTool('eraser')} style={{ fontWeight: tool === 'eraser' ? 'bold' : 'normal' }}>◻ eraser</button>
+                            <button onClick={onUndo}>↩ undo</button>
                         </div>
                     </div>
                 </div>
