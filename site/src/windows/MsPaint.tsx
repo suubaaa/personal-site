@@ -53,7 +53,7 @@ export default function MsPaint() {
     return(
         <Draggable grid={[5,5]} handle=".title-bar" nodeRef={nodeRef}>
             <div ref={nodeRef} className="window absolute bottom-4 left-4">
-                <div className="window" style={{ width: 420 }}>
+                <div className="window" style={{ width: 440 }}>
                     <div className="title-bar">
                         <div className="title-bar-text">shitty ms paint copy</div>
                         <div className="title-bar-controls">
